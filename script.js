@@ -1,27 +1,29 @@
-let srtOfUser = prompt('Write something with HTML tags');
+// let srtOfUser = prompt('Write something with HTML tags');
+
+let srtOfUser = "<div> fdgdg </div>";
 
 let arrOfUser = srtOfUser.split("");
 
 let clearStr = "";
 
-loop: for(let i = 0; i < arrOfUser.length; i++){
+let check = true;
 
-    if (arrOfUser[i] != "<"){
-        clearStr += arrOfUser[i];
-    } else if(arrOfUser[i+1] !== "/"){
-
-        do{
-            i+=2;
-            continue loop;
-        } while(arrOfUser[i] !== ">");
-
-    } else {
-
-        do{
-            i+=3;
-            continue loop;
-        } while(arrOfUser[i] !== ">");
+for(let char of srtOfUser){
+    //console.log(char);
+    if(char === "<"){
+        check = false;
+        continue;
     }
+
+    if(char === ">"){
+        check = true;
+        continue;
+    }
+
+    if(check){
+        clearStr += char;
+    }
+    
 }
 
 alert(clearStr);
